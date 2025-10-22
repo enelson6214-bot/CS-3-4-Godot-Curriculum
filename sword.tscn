@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://byeirfjx1rusj"]
+
+[ext_resource type="Script" uid="uid://ceocawh2yafhc" path="res://sword.gd" id="1_e4ynd"]
+[ext_resource type="Texture2D" uid="uid://b0xemm0u5o723" path="res://assets/sword.png" id="2_r76a6"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_e4ynd")
+
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(35.999996, 1.1920928e-07)
+rotation = 0.78476125
+scale = Vector2(0.022, 0.022)
+texture = ExtResource("2_r76a6")

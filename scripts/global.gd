@@ -1,5 +1,7 @@
 extends Node
 
+var facing_right = false
+var facing_left = false
 
 var game_world: GameWorld = null
 

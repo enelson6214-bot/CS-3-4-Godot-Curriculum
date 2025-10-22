@@ -12,15 +12,15 @@ var menu_open: bool = false
 func _ready() -> void:
 	can_damage = false
 	pass
-	saD
+
 func _physics_process(delta: float) -> void:
 	if moving == true:
 		super._physics_process(delta)
 
-func _on_detection_radius_body_entered( Node2D) -> void:
+func _on_detection_radius_body_entered(body: Node2D) -> void:
 	if body is Player:
 		shop_open = true
-	
+
 func _on_detection_radius_body_exited(body: Node2D) -> void:
 	if body is Player:
 		shop_open = false
@@ -32,5 +32,6 @@ func _input(event: ) -> void:
 		shop()
 
 func shop():
-	menu_open = true	print(inventory)
+	menu_open = true
+	print(inventory)
 	pass

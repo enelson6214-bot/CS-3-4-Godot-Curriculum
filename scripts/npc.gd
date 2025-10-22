@@ -29,10 +29,7 @@ func _physics_process(delta: float) -> void:
 func _on_detection_radius_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
 
-func NPC_hit(damage):
-	health-=damage
-	if health<=0:
-		queue_free()
+
 
 #func _on_detection_radius_body_exited(body: Node2D) -> void:
 	
@@ -53,10 +50,15 @@ func movement(_delta):
 	if is_hostile:
 		if position.distance_to(target)<30 and can_damage == true:
 			player.hit(damage, Vector2(500*target_direction))
-			speed = -100
-			can_damage = false
-			get_tree().create_timer(damage_imunne).timeout.connect(_reset_damage_cooldown)
-	
+			hit(0)
+func hit(_damage):
+	health-=_damage
+	if health<=0:
+		queue_free()
+	speed = -100
+	can_damage = false
+	get_tree().create_timer(damage_imunne).timeout.connect(_reset_damage_cooldown)
+
 func _reset_damage_cooldown():
 	speed = 100
 	can_damage = true
