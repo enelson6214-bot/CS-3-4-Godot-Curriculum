@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name npc
 
 @onready var player: Player = %Player
+
 @export var can_damage:bool = true
 @export var damage: int
 @export var damage_imunne: float = 0.25

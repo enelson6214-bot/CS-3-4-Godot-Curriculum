@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://5p2ev4o8h7si" path="res://scenes/lever.tscn" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://c6gaa4kprawy0" path="res://scenes/enemies/slime.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://lrqi4e611e5p" path="res://scenes/Merchant.tscn" id="12_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://byeirfjx1rusj" path="res://sword.tscn" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://byeirfjx1rusj" path="res://scenes/sword.tscn" id="13_trceg"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 background_energy_multiplier = 0.1
@@ -90,11 +90,39 @@ grow_vertical = 2
 
 [node name="slime" parent="." instance=ExtResource("11_ya4ey")]
 position = Vector2(-496, 36)
+move_speed = null
+can_damage = null
 damage = 5
+damage_imunne = null
+health = null
+speed = null
+is_hostile = null
 move_points = Array[Vector2]([Vector2(-400, 0), Vector2(-500, 100)])
+move_point = null
+dialogue = null
+inventory = null
+type = null
+target = null
 
 [node name="Merchant" parent="." instance=ExtResource("12_eb6dy")]
 position = Vector2(372, 38)
+shop_open = null
+buying = null
+moving = null
+buying_increase = null
+resell_increase = null
+can_damage = null
+damage = null
+damage_imunne = null
+health = null
+speed = null
+is_hostile = null
+move_points = null
+move_point = null
+dialogue = null
+inventory = Array[String](["man"])
+type = null
+target = null
 
-[node name="Node2D" parent="." instance=ExtResource("13_trceg")]
+[node name="Weapon" parent="." instance=ExtResource("13_trceg")]
 position = Vector2(1, 3)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://byeirfjx1rusj"]
 
-[ext_resource type="Script" uid="uid://ceocawh2yafhc" path="res://sword.gd" id="1_e4ynd"]
+[ext_resource type="Script" uid="uid://ceocawh2yafhc" path="res://scripts/weapon.gd" id="1_e4ynd"]
 [ext_resource type="Texture2D" uid="uid://b0xemm0u5o723" path="res://assets/sword.png" id="2_r76a6"]
 
 [node name="Weapon" type="Node2D"]

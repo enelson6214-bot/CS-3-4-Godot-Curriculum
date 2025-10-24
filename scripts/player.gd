@@ -4,14 +4,16 @@ class_name Player
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_2d: Area2D = $Area2D
-@onready var sword: Weapon = %Weapon
-
 
 
 @export var move_speed: float = 200.0
 @export var maxHealth : int = 100
 @export var health : int = maxHealth
 @export var coins : int = 0
+var wp_cd: bool = false
+var current_weapon
+var show_weapon: bool = false
+var hit_CD: float = 0.5
 var knockback: Vector2 = Vector2(0,0)
 var knockbackTween
 var can_hit: bool = false
@@ -55,10 +57,18 @@ func handle_sprite(direction: Vector2) -> void:
 		animated_sprite.play(prefix + "_forward")
 		area_2d.position = Vector2(0,30)
 		area_2d.rotation_degrees = 90
+		Global.facing_left = false
+		Global.facing_right = false
+		Global.facing_up = true
+		Global.facing_down = false
 	elif facing.y < 0:
 		animated_sprite.play(prefix + "_backward")
 		area_2d.position = Vector2(0,-30)
 		area_2d.rotation_degrees = 90
+		Global.facing_left = false
+		Global.facing_right = false
+		Global.facing_up = false
+		Global.facing_down = true
 	elif facing.x < 0:
 		animated_sprite.play(prefix + "_side")
 		animated_sprite.flip_h = true
@@ -66,6 +76,8 @@ func handle_sprite(direction: Vector2) -> void:
 		area_2d.rotation_degrees = 0
 		Global.facing_left = true
 		Global.facing_right = false
+		Global.facing_up = false
+		Global.facing_down = false
 	elif facing.x > 0:
 		animated_sprite.play(prefix + "_side")
 		animated_sprite.flip_h = false
@@ -73,6 +85,8 @@ func handle_sprite(direction: Vector2) -> void:
 		area_2d.rotation_degrees = 0
 		Global.facing_left = false
 		Global.facing_right = true
+		Global.facing_up = false
+		Global.facing_down = false
 func collect_pickup(_type : String, _amount : int):
 	if _type == "coin":
 		coins += _amount
@@ -125,8 +139,21 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	can_hit = false
 
 func Player_attack(_NPC):
-	weapon.showing = true
+	show_weapon = true
 	if can_hit == true:
-		if not _NPC is Player:
+		if _NPC is npc and wp_cd == false:
 			_NPC.hit(weapon_damage)
 			print(_NPC.health, _NPC)
+			wp_cd =true
+	get_tree().create_timer(hit_CD).timeout.connect(_show_weapon)
+
+func _show_weapon():
+	wp_cd = false
+	show_weapon = false
+	pass
+
+func config_weapon(_weapon):
+	if _weapon == "sword":
+		pass
+	pass
+	
